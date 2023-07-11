@@ -1,0 +1,122 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00080000         xr
+SRAM             0x20000000         0x00024000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD startup.o
+                0x20024000                        __stack_init = (ORIGIN (SRAM) + LENGTH (SRAM))
+
+.text           0x08000000      0x1a0
+ *(.isr_vectors)
+ .isr_vectors   0x08000000       0xbc startup.o
+                0x08000000                vectors
+ *(.text)
+ .text          0x080000bc       0x54 main.o
+                0x080000bc                main
+ .text          0x08000110       0x90 startup.o
+                0x08000110                Reset_Handler
+                0x08000194                I2C2_3_IRQHandler
+                0x08000194                USART3_4_5_6_LPUART1_IRQHandler
+                0x08000194                TIM1_CC_IRQHandler
+                0x08000194                HardFault_Handler
+                0x08000194                ADC1_COMP_IRQHandler
+                0x08000194                SysTick_Handler
+                0x08000194                PendSV_Handler
+                0x08000194                NMI_Handler
+                0x08000194                I2C1_IRQHandler
+                0x08000194                TIM7_LPTIM2_IRQHandler
+                0x08000194                TIM17_FDCAN_IT1_IRQHandler
+                0x08000194                DMA1_Ch4_7_DMA2_Ch1_5_DMAMUX1_OVR_IRQHandler
+                0x08000194                RCC_CRS_IRQHandler
+                0x08000194                RTC_TAMP_IRQHandler
+                0x08000194                SPI1_IRQHandler
+                0x08000194                USB_UCPD1_2_IRQHandler
+                0x08000194                EXTI2_3_IRQHandler
+                0x08000194                USART2_LPUART2_IRQHandler
+                0x08000194                PVD_VDDIO2_IRQHandler
+                0x08000194                EXTI4_15_IRQHandler
+                0x08000194                DMA1_Channel1_IRQHandler
+                0x08000194                CEC_IRQHandler
+                0x08000194                TIM14_IRQHandler
+                0x08000194                TIM15_IRQHandler
+                0x08000194                TIM3_TIM4_IRQHandler
+                0x08000194                EXTI0_1_IRQHandler
+                0x08000194                SPI2_3_IRQHandler
+                0x08000194                SVC_Handler
+                0x08000194                TIM6_DAC_LPTIM1_IRQHandler
+                0x08000194                WWDG_IRQHandler
+                0x08000194                TIM2_IRQHandler
+                0x08000194                DMA1_Channel2_3_IRQHandler
+                0x08000194                Common_Handler
+                0x08000194                FLASH_IRQHandler
+                0x08000194                USART1_IRQHandler
+                0x08000194                TIM16_FDCAN_IT0_IRQHandler
+                0x08000194                TIM1_BRK_UP_TRG_COM_IRQHandler
+                0x080001a0                        . = ALIGN (0x4)
+ *(.rodata)
+                0x080001a0                        . = ALIGN (0x4)
+
+.glue_7         0x080001a0        0x0
+ .glue_7        0x080001a0        0x0 linker stubs
+
+.glue_7t        0x080001a0        0x0
+ .glue_7t       0x080001a0        0x0 linker stubs
+
+.vfp11_veneer   0x080001a0        0x0
+ .vfp11_veneer  0x080001a0        0x0 linker stubs
+
+.v4_bx          0x080001a0        0x0
+ .v4_bx         0x080001a0        0x0 linker stubs
+
+.iplt           0x080001a0        0x0
+ .iplt          0x080001a0        0x0 startup.o
+
+.rel.dyn        0x080001a0        0x0
+ .rel.iplt      0x080001a0        0x0 startup.o
+
+.rodata         0x080001a0        0x0
+                0x080001a0                        . = ALIGN (0x4)
+ *(.rodata)
+                0x080001a0                        . = ALIGN (0x4)
+                0x080001a0                        __data_init = LOADADDR (.data)
+
+.data           0x20000000        0x0 load address 0x080001a0
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        __data_start = .
+ *(.data)
+ .data          0x20000000        0x0 main.o
+ .data          0x20000000        0x0 startup.o
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        __data_end = .
+
+.igot.plt       0x20000000        0x0 load address 0x080001a0
+ .igot.plt      0x20000000        0x0 startup.o
+
+.bss            0x20000000        0x0 load address 0x080001a0
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        __bss_start = .
+ *(.bss)
+ .bss           0x20000000        0x0 main.o
+ .bss           0x20000000        0x0 startup.o
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        __bss_end = .
+OUTPUT(main.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x1e
+ .comment       0x00000000       0x1e main.o
+                                 0x1f (size before relaxing)
+ .comment       0x0000001e       0x1f startup.o
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x2c main.o
+ .ARM.attributes
+                0x0000002c       0x2c startup.o
