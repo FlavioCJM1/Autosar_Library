@@ -8,18 +8,18 @@ SRAM             0x20000000         0x00024000         rw
 
 Linker script and memory map
 
-LOAD main.o
-LOAD startup.o
+LOAD Build/main.o
+LOAD Build/startup.o
                 0x20024000                        __stack_init = (ORIGIN (SRAM) + LENGTH (SRAM))
 
 .text           0x08000000      0x1a0
  *(.isr_vectors)
- .isr_vectors   0x08000000       0xbc startup.o
+ .isr_vectors   0x08000000       0xbc Build/startup.o
                 0x08000000                vectors
  *(.text)
- .text          0x080000bc       0x54 main.o
+ .text          0x080000bc       0x54 Build/main.o
                 0x080000bc                main
- .text          0x08000110       0x90 startup.o
+ .text          0x08000110       0x90 Build/startup.o
                 0x08000110                Reset_Handler
                 0x08000194                I2C2_3_IRQHandler
                 0x08000194                USART3_4_5_6_LPUART1_IRQHandler
@@ -75,10 +75,10 @@ LOAD startup.o
  .v4_bx         0x080001a0        0x0 linker stubs
 
 .iplt           0x080001a0        0x0
- .iplt          0x080001a0        0x0 startup.o
+ .iplt          0x080001a0        0x0 Build/startup.o
 
 .rel.dyn        0x080001a0        0x0
- .rel.iplt      0x080001a0        0x0 startup.o
+ .rel.iplt      0x080001a0        0x0 Build/startup.o
 
 .rodata         0x080001a0        0x0
                 0x080001a0                        . = ALIGN (0x4)
@@ -90,33 +90,33 @@ LOAD startup.o
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        __data_start = .
  *(.data)
- .data          0x20000000        0x0 main.o
- .data          0x20000000        0x0 startup.o
+ .data          0x20000000        0x0 Build/main.o
+ .data          0x20000000        0x0 Build/startup.o
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        __data_end = .
 
 .igot.plt       0x20000000        0x0 load address 0x080001a0
- .igot.plt      0x20000000        0x0 startup.o
+ .igot.plt      0x20000000        0x0 Build/startup.o
 
 .bss            0x20000000        0x0 load address 0x080001a0
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        __bss_start = .
  *(.bss)
- .bss           0x20000000        0x0 main.o
- .bss           0x20000000        0x0 startup.o
+ .bss           0x20000000        0x0 Build/main.o
+ .bss           0x20000000        0x0 Build/startup.o
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        __bss_end = .
-OUTPUT(main.elf elf32-littlearm)
+OUTPUT(Build/main.elf elf32-littlearm)
 LOAD linker stubs
 
 .comment        0x00000000       0x1e
- .comment       0x00000000       0x1e main.o
+ .comment       0x00000000       0x1e Build/main.o
                                  0x1f (size before relaxing)
- .comment       0x0000001e       0x1f startup.o
+ .comment       0x0000001e       0x1f Build/startup.o
 
 .ARM.attributes
                 0x00000000       0x2c
  .ARM.attributes
-                0x00000000       0x2c main.o
+                0x00000000       0x2c Build/main.o
  .ARM.attributes
-                0x0000002c       0x2c startup.o
+                0x0000002c       0x2c Build/startup.o

@@ -1,6 +1,20 @@
 #ifndef PLATFORM_TYPES_H__
 #define PLATFORM_TYPES_H__
 
+#include <stdbool.h>
+
+/**
+ * @name    unsigned
+ * @reqs    SWS_Platform_00026
+ *
+ * This standard AUTOSAR type shall only be used together 
+ * with the definitions TRUE and FALSE
+ */
+/**@{*/
+typedef bool boolean; /*!< This standard AUTOSAR type shall only be used together
+                             with the definitions TRUE and FALSE. */
+/**@}*/
+
 /**
  * @name    unsigned
  * @reqs    SWS_Platform_00013, SWS_Platform_00014, SWS_Platform_00015
@@ -92,7 +106,7 @@ typedef signed long sint64_least;   /*!< standar type to declare max or min rang
  * for big endian
  */
 /**@{*/
-#define CPU_TYPE_8       8 /*!< Indicating a 8 bit processor */
+#define CPU_TYPE_8         8 /*!< Indicating a 8 bit processor */
 #define CPU_TYPE_16       16 /*!< Indicating a 16 bit processor */
 #define CPU_TYPE_32       32 /*!< Indicating a 32 bit processor */
 #define CPU_TYPE_64       64 /*!< Indicating a 64 bit processor */
