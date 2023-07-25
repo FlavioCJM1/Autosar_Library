@@ -16,35 +16,43 @@
   :message: ''
   :unity_test_time: 0
 - :test: test_Bfx_ClrBit_u8u8_bit5
-  :line: 53
+  :line: 59
   :message: ''
   :unity_test_time: 0
 - :test: test_Bfx_GetBit_u8u8_u8_bit1
-  :line: 60
+  :line: 71
   :message: ''
   :unity_test_time: 0
 - :test: test_Bfx_GetBit_u8u8_u8_bit2
-  :line: 67
+  :line: 83
   :message: ''
   :unity_test_time: 0
 - :test: test_Bfx_Setbit_u8u8u8u8_bit3
-  :line: 74
+  :line: 96
   :message: ''
   :unity_test_time: 0
 - :test: test_Bfx_Setbit_u8u8u8u8_bit4
-  :line: 81
+  :line: 109
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_SetBitMask_u8u8_Mask128
+  :line: 123
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_SetBitMask_u8u8_Mask32
+  :line: 130
   :message: ''
   :unity_test_time: 0
 :failures:
 - :test: test_Bfx_GetBits_u8u8u8_u8
-  :line: 92
-  :message: Expected 0x13 Was 0x03. Bit 3 was not clear as supposed to be
+  :line: 120
+  :message: Expected 0x07 Was 0x0F. Bit 3 was not clear as supposed to be
   :unity_test_time: 0
 :ignores: []
 :counts:
-  :total: 9
-  :passed: 8
+  :total: 11
+  :passed: 10
   :failed: 1
   :ignored: 0
 :stdout: []
-:time: 0.003066336999836494
+:time: 0.0037536320000981505

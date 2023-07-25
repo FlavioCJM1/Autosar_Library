@@ -47,7 +47,7 @@ static inline boolean Bfx_GetBit_u32u8_u8(uint32,uint8);
 static inline void Bfx_SetBits_u32u8u8u8( uint32* Data, uint8 BitStartPn, uint8 BitLn, uint8 Status );
 static inline uint32 Bfx_GetBits_u32u8u8_u8(uint32 Data,uint8 BitStartPin,uint8 BitLn);
 static inline void Bfx_SetBitMask_u32u32(uint32* Data, uint32 Mask);
-static inline void Bfx_ClrBitMask_u32u32(uint32* Data, uint8 Mask);
+static inline void Bfx_ClrBitMask_u32u32(uint32* Data, uint32 Mask);
 static inline boolean Bfx_TstBitMask_u32u32_u8(uint32,uint32);
 static inline boolean Bfx_TstBitLnMask_u32u32_u8(uint32,uint32);
 static inline void Bfx_ToggleBits_u32(uint32* Data);

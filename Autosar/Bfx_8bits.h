@@ -10,8 +10,8 @@ static inline void Bfx_SetBits_u8u8u8u8( uint8* Data, uint8 BitStartPn, uint8 Bi
 static inline uint8 Bfx_GetBits_u8u8u8_u8(uint8 Data,uint8 BitStartPin,uint8 BitLn);
 static inline void Bfx_SetBitMask_u8u8(uint8* Data, uint8 Mask);
 static inline void Bfx_ClrBitMask_u8u8(uint8* Data, uint8 Mask);
-static inline boolean Bfx_TstBitMask_u8u8_u8(uint8,uint8);
-static inline boolean Bfx_TstBitLnMask_u8u8_u8(uint8,uint8);
+static inline boolean Bfx_TstBitMask_u8u8_u8(uint8 Data,uint8 Mask);
+static inline boolean Bfx_TstBitLnMask_u8u8_u8(uint8 Data,uint8 Mask);
 static inline void Bfx_ToggleBits_u8(uint8* Data);
 static inline void Bfx_ToggleBitMask_u8u8(uint8* Data, uint8 Mask);
 static inline void Bfx_ShiftBitRt_u8u8(uint8* Data, uint8 ShiftCnt);
@@ -56,17 +56,21 @@ static inline void Bfx_SetBits_u8u8u8u8( uint8* Data, uint8 BitStartPn, uint8 Bi
 
 static inline uint8 Bfx_GetBits_u8u8u8_u8(uint8 Data,uint8 BitStartPin,uint8 BitLn)
 {
-    Data = (Data >> (BitStartPin));
-
-    for(uint8 i = (BitLn); i <= 8u; i++)
+    for (uint8 i = (BitStartPin + (BitLn)); i <= 7u; i++)//revisar esta parte
     {
-        //Data = (Data & (0x0 << i));
+        /* code */
         Data &= ~(0x1 << i);
     }
+    Data = (Data >> (BitStartPin));
+
     /*
-    0000 0000
-    0100 0000 >> 6 
-    0000 0001
+    7654 3210
+    1100 0000 = 192
+    11bb bs00 = 220
+    1111 1100
+    0000 0111 = resultado por el test
+    0000 1111 = Respuesta 
+
 
     1011 1010
     0001 0111 >> 3
@@ -77,6 +81,88 @@ static inline uint8 Bfx_GetBits_u8u8u8_u8(uint8 Data,uint8 BitStartPin,uint8 Bit
     0000 0011 
     */
    return Data;
+}
+
+static inline void Bfx_SetBitMask_u8u8(uint8* Data, uint8 Mask)
+{
+    *Data = *Data | Mask;
+}
+
+static inline void Bfx_ClrBitMask_u8u8(uint8* Data, uint8 Mask)
+{
+    *Data = *Data &~ Mask;
+}
+
+static inline boolean Bfx_TstBitMask_u8u8_u8(uint8 Data,uint8 Mask)
+{
+    bool Result;
+
+    if((Data & Mask) == Mask)
+    {
+        Result = true;
+    }
+    else
+    {
+        Result = false;
+    }
+
+    return Result;
+}
+
+static inline boolean Bfx_TstBitLnMask_u8u8_u8(uint8 Data,uint8 Mask)
+{
+    /*
+    COdigo pendiente
+    */
+}
+
+static inline void Bfx_ToggleBits_u8(uint8* Data)
+{
+    /*
+    Complemento a 1
+    */
+   for(uint8 i = 0; i <= 8; i++)
+   {
+        *Data ^= (0x1 << i);
+   }
+}
+
+static inline void Bfx_ToggleBitMask_u8u8(uint8* Data, uint8 Mask)
+{
+    /*
+    This function toggles the bits of data when the corresponding bit of the mask is 
+    enabled and set to 1.
+    */
+}
+
+static inline void Bfx_ShiftBitRt_u8u8(uint8* Data, uint8 ShiftCnt)
+{
+    /*
+    This function shall shift data to the right by ShiftCnt. The most significant bit 
+    (left-most bit) is replaced by a '0' bit and the least significant bit (right-most bit) 
+    is dis-carded for every single bit shift cycle.
+    */
+}
+
+static inline void Bfx_ShiftBitLt_u8u8(uint8* Data, uint8 ShiftCnt)
+{
+    /*
+    This function shall shift data to the left by ShiftCnt. The least significant bit 
+    (right-most bit) is replaced by a '0' bit and the most significant bit (left-most bit) is 
+    dis-carded for every single bit shift cycle.
+    */
+}
+
+static inline void Bfx_PutBit_u8u8u8(uint8* Data, uint8 BitPn, boolean Status)
+{
+    if(Status == true)
+    {
+        *Data |= (0x1 << BitPn);   
+    }
+    else
+    {
+        *Data &= ~(0x1 << BitPn);
+    }
 }
 
 #endif
