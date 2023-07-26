@@ -1,0 +1,18 @@
+---
+:source:
+  :path: Test
+  :file: test_Bfx_32bits.c
+:successes: []
+:failures:
+- :test: test__Bfx_SetBit_u32u8__bit2
+  :line: 24
+  :message: Expected 0x00 Was 0x04. Bit 2 was not set as supposed to be
+  :unity_test_time: 0
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 0
+  :failed: 1
+  :ignored: 0
+:stdout: []
+:time: 0.003473154000857903

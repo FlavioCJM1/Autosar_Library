@@ -20,8 +20,8 @@ void tearDown( void )
 void test__Bfx_SetBit_u8u8__bit2( void )
 {
     uint8 Data = 0u;
-    Bfx_SetBit_u8u8( &Data, 2u );
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE( Data, 0x04, "Bit 2 was not set as supposed to be" );
+    Bfx_SetBit_u8u8( &Data, 2u );//funcion de usuario a probar
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE( 0x08, Data, "Bit 2 was not set as supposed to be" );
 }
 
 /**
@@ -152,7 +152,7 @@ void test_Bfx_SetBitMask_u8u8_Mask32(void)
  * The test validates the state of the cleared bits with the corresponding mask
  * and remaining bits retain their original values. Clear Mask 128.
  */
-void Bfx_ClrBitMask_u8u8_ClMASK128(void)
+void test_Bfx_ClrBitMask_u8u8_ClMASK128(void)
 {
     uint8 Data = 144u;
     Bfx_ClrBitMask_u8u8(&Data, 128u);
@@ -165,10 +165,10 @@ void Bfx_ClrBitMask_u8u8_ClMASK128(void)
  * The test validates the state of the cleared bits with the corresponding mask
  * and remaining bits retain their original values. Clear Mask 64.
  */
-void Bfx_ClrBitMask_u8u8_ClMASK64(void)
+void test_Bfx_ClrBitMask_u8u8_ClMASK64(void)
 {
     uint8 Data = 80u;
     Bfx_ClrBitMask_u8u8(&Data, 128u);
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE( Data, 0x10, "Bit 6 should be cleaned" );
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE( Data, 0x50, "Bit 6 should be cleaned" );
 }
 

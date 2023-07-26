@@ -22,6 +22,8 @@ extern void test_Bfx_Setbit_u8u8u8u8_bit4(void);
 extern void test_Bfx_GetBits_u8u8u8_u8(void);
 extern void test_Bfx_SetBitMask_u8u8_Mask128(void);
 extern void test_Bfx_SetBitMask_u8u8_Mask32(void);
+extern void test_Bfx_ClrBitMask_u8u8_ClMASK128(void);
+extern void test_Bfx_ClrBitMask_u8u8_ClMASK64(void);
 
 
 /*=======Mock Management=====*/
@@ -100,8 +102,10 @@ int main(void)
   run_test(test_Bfx_Setbit_u8u8u8u8_bit3, "test_Bfx_Setbit_u8u8u8u8_bit3", 96);
   run_test(test_Bfx_Setbit_u8u8u8u8_bit4, "test_Bfx_Setbit_u8u8u8u8_bit4", 109);
   run_test(test_Bfx_GetBits_u8u8u8_u8, "test_Bfx_GetBits_u8u8u8_u8", 116);
-  run_test(test_Bfx_SetBitMask_u8u8_Mask128, "test_Bfx_SetBitMask_u8u8_Mask128", 123);
-  run_test(test_Bfx_SetBitMask_u8u8_Mask32, "test_Bfx_SetBitMask_u8u8_Mask32", 130);
+  run_test(test_Bfx_SetBitMask_u8u8_Mask128, "test_Bfx_SetBitMask_u8u8_Mask128", 129);
+  run_test(test_Bfx_SetBitMask_u8u8_Mask32, "test_Bfx_SetBitMask_u8u8_Mask32", 142);
+  run_test(test_Bfx_ClrBitMask_u8u8_ClMASK128, "test_Bfx_ClrBitMask_u8u8_ClMASK128", 155);
+  run_test(test_Bfx_ClrBitMask_u8u8_ClMASK64, "test_Bfx_ClrBitMask_u8u8_ClMASK64", 168);
 
   return UnityEnd();
 }
