@@ -4,23 +4,6 @@
 #include "Platform_Types.h"
 
 /*
-static inline void Bfx_SetBit_<TypeMn>u8( <Type> *Data, uint8 BitPn )
-static inline void Bfx_ClrBit_<TypeMn>u8( <Type>* Data, uint8 BitPn )
-static inline boolean Bfx_GetBit_<InTypeMn>u8_u8( <InType> Data, uint8 BitPn )
-static inline void Bfx_SetBits_<TypeMn>u8u8u8( <Type>* Data, uint8 BitStartPn, uint8 BitLn, uint8 Status )
-static inline <Type> Bfx_GetBits_<TypeMn>u8u8_<TypeMn>( <Type> Data, uint8 BitStartPn, uint8 BitLn )
-static inline void Bfx_SetBitMask_<TypeMn><TypeMn>( <Type>* Data, <Type> Mask )
-static inline void Bfx_ClrBitMask_<TypeMn><TypeMn>( <Type>* Data, <Type> Mask )
-static inline boolean Bfx_TstBitMask_<InTypeMn><InTypeMn>_u8( <InType> Data, <InType> Mask )
-static inline boolean Bfx_TstBitLnMask_<InTypeMn><InTypeMn>_u8( <InType> Data, <InType> Mask )
-static inline void Bfx_ToggleBits_<TypeMn>( <Type>* Data )
-static inline void Bfx_ToggleBitMask_<TypeMn><TypeMn>( <Type>* Data, <Type> Mask )
-static inline void Bfx_ShiftBitRt_<TypeMn>u8( <Type>* Data, uint8 ShiftCnt )
-static inline void Bfx_ShiftBitLt_<TypeMn>u8( <Type>* Data, uint8 ShiftCnt )
-static inline void Bfx_PutBit_<TypeMn>u8u8( <Type>* Data, uint8 BitPn, boolean Status )
-*/
-
-/*
 *8bits functions
 */
 static inline void Bfx_SetBit_u8u8(uint8* Data, uint8 BitPn);

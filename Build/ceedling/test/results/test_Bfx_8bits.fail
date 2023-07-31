@@ -3,6 +3,10 @@
   :path: Test
   :file: test_Bfx_8bits.c
 :successes:
+- :test: test__Bfx_SetBit_u8u8__bit2
+  :line: 20
+  :message: ''
+  :unity_test_time: 0
 - :test: test__Bfx_SetBit_u8u8__bit7
   :line: 33
   :message: ''
@@ -47,20 +51,60 @@
   :line: 168
   :message: ''
   :unity_test_time: 0
-:failures:
-- :test: test__Bfx_SetBit_u8u8__bit2
-  :line: 24
-  :message: Expected 0x08 Was 0x04. Bit 2 was not set as supposed to be
+- :test: test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_144
+  :line: 175
+  :message: ''
   :unity_test_time: 0
+- :test: test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_15
+  :line: 182
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_TstBitLnMask_u8u8_u8_Mask64
+  :line: 189
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_TstBitLnMask_u8u8_u8_Mask87
+  :line: 196
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_ToggleBits_u8_Toogle170
+  :line: 203
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_ToggleBits_u8_Toogle85
+  :line: 210
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_ToggleBitMask_u8u8_MASK140
+  :line: 217
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_ToggleBitMask_u8u8_MASKFF
+  :line: 224
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_PutBit_u8u8u8_231
+  :line: 238
+  :message: ''
+  :unity_test_time: 0
+- :test: test_Bfx_PutBit_u8u8u8_156
+  :line: 245
+  :message: ''
+  :unity_test_time: 0
+:failures:
 - :test: test_Bfx_GetBits_u8u8u8_u8
   :line: 120
-  :message: Expected 0x07 Was 0x0F. Bit 3 was not clear as supposed to be
+  :message: Expected 0x0F Was 0x07. Bit 3 was not clear as supposed to be
+  :unity_test_time: 0
+- :test: test_Bfx_ShiftBitRt_u8u8
+  :line: 235
+  :message: Expected 0x04 Was 0x0D. The & with the mask was not equals to mask
   :unity_test_time: 0
 :ignores: []
 :counts:
-  :total: 13
-  :passed: 11
+  :total: 24
+  :passed: 22
   :failed: 2
   :ignored: 0
 :stdout: []
-:time: 0.0043825200000355835
+:time: 0.004733493000003364

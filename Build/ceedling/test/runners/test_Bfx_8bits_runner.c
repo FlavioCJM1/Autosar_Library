@@ -24,6 +24,17 @@ extern void test_Bfx_SetBitMask_u8u8_Mask128(void);
 extern void test_Bfx_SetBitMask_u8u8_Mask32(void);
 extern void test_Bfx_ClrBitMask_u8u8_ClMASK128(void);
 extern void test_Bfx_ClrBitMask_u8u8_ClMASK64(void);
+extern void test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_144(void);
+extern void test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_15(void);
+extern void test_Bfx_TstBitLnMask_u8u8_u8_Mask64(void);
+extern void test_Bfx_TstBitLnMask_u8u8_u8_Mask87(void);
+extern void test_Bfx_ToggleBits_u8_Toogle170(void);
+extern void test_Bfx_ToggleBits_u8_Toogle85(void);
+extern void test_Bfx_ToggleBitMask_u8u8_MASK140(void);
+extern void test_Bfx_ToggleBitMask_u8u8_MASKFF(void);
+extern void test_Bfx_ShiftBitRt_u8u8(void);
+extern void test_Bfx_PutBit_u8u8u8_231(void);
+extern void test_Bfx_PutBit_u8u8u8_156(void);
 
 
 /*=======Mock Management=====*/
@@ -106,6 +117,17 @@ int main(void)
   run_test(test_Bfx_SetBitMask_u8u8_Mask32, "test_Bfx_SetBitMask_u8u8_Mask32", 142);
   run_test(test_Bfx_ClrBitMask_u8u8_ClMASK128, "test_Bfx_ClrBitMask_u8u8_ClMASK128", 155);
   run_test(test_Bfx_ClrBitMask_u8u8_ClMASK64, "test_Bfx_ClrBitMask_u8u8_ClMASK64", 168);
+  run_test(test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_144, "test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_144", 175);
+  run_test(test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_15, "test_Bfx_TstBitMask_u8u8_u8_TstBitmsk_15", 182);
+  run_test(test_Bfx_TstBitLnMask_u8u8_u8_Mask64, "test_Bfx_TstBitLnMask_u8u8_u8_Mask64", 189);
+  run_test(test_Bfx_TstBitLnMask_u8u8_u8_Mask87, "test_Bfx_TstBitLnMask_u8u8_u8_Mask87", 196);
+  run_test(test_Bfx_ToggleBits_u8_Toogle170, "test_Bfx_ToggleBits_u8_Toogle170", 203);
+  run_test(test_Bfx_ToggleBits_u8_Toogle85, "test_Bfx_ToggleBits_u8_Toogle85", 210);
+  run_test(test_Bfx_ToggleBitMask_u8u8_MASK140, "test_Bfx_ToggleBitMask_u8u8_MASK140", 217);
+  run_test(test_Bfx_ToggleBitMask_u8u8_MASKFF, "test_Bfx_ToggleBitMask_u8u8_MASKFF", 224);
+  run_test(test_Bfx_ShiftBitRt_u8u8, "test_Bfx_ShiftBitRt_u8u8", 231);
+  run_test(test_Bfx_PutBit_u8u8u8_231, "test_Bfx_PutBit_u8u8u8_231", 238);
+  run_test(test_Bfx_PutBit_u8u8u8_156, "test_Bfx_PutBit_u8u8u8_156", 245);
 
   return UnityEnd();
 }

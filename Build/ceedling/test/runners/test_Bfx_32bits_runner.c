@@ -11,7 +11,8 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test__Bfx_SetBit_u32u8__bit2(void );
+extern void test__Bfx_SetBit_u32u8__bit16(void );
+extern void test_Bfx_SetBit_u32u8_bit32(void);
 
 
 /*=======Mock Management=====*/
@@ -81,7 +82,8 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_Bfx_32bits.c");
-  run_test(test__Bfx_SetBit_u32u8__bit2, "test__Bfx_SetBit_u32u8__bit2", 20);
+  run_test(test__Bfx_SetBit_u32u8__bit16, "test__Bfx_SetBit_u32u8__bit16", 20);
+  run_test(test_Bfx_SetBit_u32u8_bit32, "test_Bfx_SetBit_u32u8_bit32", 27);
 
   return UnityEnd();
 }

@@ -17,9 +17,16 @@ void tearDown( void )
  * The test validates if bit 2 is set over a varible with value 0x00, to pass the test data should have
  * a value of 0x04.
  */
-void test__Bfx_SetBit_u32u8__bit2( void )
+void test__Bfx_SetBit_u32u8__bit16( void )
 {
     uint32 Data = 0u;
     Bfx_SetBit_u32u8( &Data, 16u );
-    TEST_ASSERT_EQUAL_HEX8_MESSAGE( Data, 0x04, "Bit 2 was not set as supposed to be" );
+    TEST_ASSERT_EQUAL_HEX8_MESSAGE( Data, 0x10000, "Bit 16 was not set as supposed to be" );
+}
+
+void test_Bfx_SetBit_u32u8_bit32(void)
+{
+    uint32 Data = 0u;
+    Bfx_SetBit_u32u8( &Data, 31u );
+    TEST_ASSERT_EQUAL_HEX32_MESSAGE( Data, 0x80000000, "Bit 32 was not set as supposed to be" );
 }

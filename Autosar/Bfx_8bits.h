@@ -3,21 +3,6 @@
 
 #include "Platform_Types.h"
 
-static inline void Bfx_SetBit_u8u8(uint8* Data, uint8 BitPn);
-static inline void Bfx_ClrBit_u8u8(uint8* Data, uint8 BitPn);
-static inline boolean Bfx_GetBit_u8u8_u8(uint8 Data,uint8 BitPn);
-static inline void Bfx_SetBits_u8u8u8u8( uint8* Data, uint8 BitStartPn, uint8 BitLn, uint8 Status );
-static inline uint8 Bfx_GetBits_u8u8u8_u8(uint8 Data,uint8 BitStartPin,uint8 BitLn);
-static inline void Bfx_SetBitMask_u8u8(uint8* Data, uint8 Mask);
-static inline void Bfx_ClrBitMask_u8u8(uint8* Data, uint8 Mask);
-static inline boolean Bfx_TstBitMask_u8u8_u8(uint8 Data,uint8 Mask);
-static inline boolean Bfx_TstBitLnMask_u8u8_u8(uint8 Data,uint8 Mask);
-static inline void Bfx_ToggleBits_u8(uint8* Data);
-static inline void Bfx_ToggleBitMask_u8u8(uint8* Data, uint8 Mask);
-static inline void Bfx_ShiftBitRt_u8u8(uint8* Data, uint8 ShiftCnt);
-static inline void Bfx_ShiftBitLt_u8u8(uint8* Data, uint8 ShiftCnt);
-static inline void Bfx_PutBit_u8u8u8(uint8* Data, uint8 BitPn, boolean Status);
-
 static inline void Bfx_SetBit_u8u8(uint8* Data, uint8 BitPn)
 {
     *Data = *Data | (0x01 << BitPn);
@@ -114,6 +99,19 @@ static inline boolean Bfx_TstBitLnMask_u8u8_u8(uint8 Data,uint8 Mask)
     /*
     COdigo pendiente
     */
+   bool Result;
+   Data = Data & Mask;
+
+   if(Data > false)
+   {
+        Result = true;
+   }
+   else
+   {
+        Result = false;
+   }
+   
+   return Result;
 }
 
 static inline void Bfx_ToggleBits_u8(uint8* Data)
@@ -132,7 +130,15 @@ static inline void Bfx_ToggleBitMask_u8u8(uint8* Data, uint8 Mask)
     /*
     This function toggles the bits of data when the corresponding bit of the mask is 
     enabled and set to 1.
+
+    0000 0000
+    1101 0011 Data
+    1000 1100 Mask
+    0101 1111 Resultado
     */
+   
+   *Data ^= Mask;
+
 }
 
 static inline void Bfx_ShiftBitRt_u8u8(uint8* Data, uint8 ShiftCnt)
@@ -141,7 +147,27 @@ static inline void Bfx_ShiftBitRt_u8u8(uint8* Data, uint8 ShiftCnt)
     This function shall shift data to the right by ShiftCnt. The most significant bit 
     (left-most bit) is replaced by a '0' bit and the least significant bit (right-most bit) 
     is dis-carded for every single bit shift cycle.
+
+    0000 0000
+    1101 1100 Data - Shiftcnt = 4
+    0000 1101
+    0000 0100 resultado
+
     */
+   *Data = (*Data >> ShiftCnt);
+   uint8 flag = 0u;
+   uint8 Data2 = *Data;
+    for(uint8 i = 7; i > 0; i--)
+    {
+        flag &= 0x0;
+        flag |= (0x01 << i);
+
+        if((Data2 & flag) == flag)
+        {
+            *Data ^= flag;
+            i = 0u;
+        }
+    }
 }
 
 static inline void Bfx_ShiftBitLt_u8u8(uint8* Data, uint8 ShiftCnt)
