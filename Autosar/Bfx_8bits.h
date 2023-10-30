@@ -170,14 +170,14 @@ static inline void Bfx_ShiftBitRt_u8u8(uint8* Data, uint8 ShiftCnt)
     }
 }
 
-static inline void Bfx_ShiftBitLt_u8u8(uint8* Data, uint8 ShiftCnt)
-{
+//static inline void Bfx_ShiftBitLt_u8u8(uint8* Data, uint8 ShiftCnt)
+//{
     /*
     This function shall shift data to the left by ShiftCnt. The least significant bit 
     (right-most bit) is replaced by a '0' bit and the most significant bit (left-most bit) is 
     dis-carded for every single bit shift cycle.
     */
-}
+//}
 
 static inline void Bfx_PutBit_u8u8u8(uint8* Data, uint8 BitPn, boolean Status)
 {

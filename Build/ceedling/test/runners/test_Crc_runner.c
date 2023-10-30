@@ -11,8 +11,13 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test__Bfx_SetBit_u32u8__bit16(void );
-extern void test_Bfx_SetBit_u32u8_bit32(void);
+extern void test_Crc_8bits(void);
+extern void test_Crc_8bits2HF(void);
+extern void test_Crc_16bit(void);
+extern void test_Crc_32bit(void);
+extern void test_Crc_64bitP7(void);
+extern void test_Crc_16bitARC(void);
+extern void test_Crc_16bit_ARC_PRUEBA(void);
 
 
 /*=======Mock Management=====*/
@@ -81,9 +86,14 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 /*=======MAIN=====*/
 int main(void)
 {
-  UnityBegin("test_Bfx_32bits.c");
-  run_test(test__Bfx_SetBit_u32u8__bit16, "test__Bfx_SetBit_u32u8__bit16", 20);
-  run_test(test_Bfx_SetBit_u32u8_bit32, "test_Bfx_SetBit_u32u8_bit32", 27);
+  UnityBegin("test_Crc.c");
+  run_test(test_Crc_8bits, "test_Crc_8bits", 14);
+  run_test(test_Crc_8bits2HF, "test_Crc_8bits2HF", 24);
+  run_test(test_Crc_16bit, "test_Crc_16bit", 34);
+  run_test(test_Crc_32bit, "test_Crc_32bit", 44);
+  run_test(test_Crc_64bitP7, "test_Crc_64bitP7", 69);
+  run_test(test_Crc_16bitARC, "test_Crc_16bitARC", 81);
+  run_test(test_Crc_16bit_ARC_PRUEBA, "test_Crc_16bit_ARC_PRUEBA", 97);
 
   return UnityEnd();
 }
